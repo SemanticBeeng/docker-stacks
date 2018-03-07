@@ -20,7 +20,8 @@ USER $NB_UID
 RUN conda install --quiet --yes \
     'nomkl' \
     'ipywidgets=7.1*' \
-    'pandas=0.19*' \
+    'pandas=0.22*' \
+    'rpy2=2.9.2*' \
     'numexpr=2.6*' \
     'matplotlib=2.0*' \
     'scipy=0.19*' \
@@ -28,7 +29,7 @@ RUN conda install --quiet --yes \
     'scikit-learn=0.18*' \
     'scikit-image=0.12*' \
     'sympy=1.0*' \
-    'cython=0.25*' \
+    'cython=0.27*' \
     'patsy=0.4*' \
     'statsmodels=0.8*' \
     'cloudpickle=0.2*' \
