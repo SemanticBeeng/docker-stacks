@@ -21,7 +21,6 @@ RUN conda install --quiet --yes \
     'nomkl' \
     'ipywidgets=7.1*' \
     'pandas=0.22*' \
-    'rpy2=2.9.2*' \
     'numexpr=2.6*' \
     'matplotlib=2.0*' \
     'scipy=0.19*' \

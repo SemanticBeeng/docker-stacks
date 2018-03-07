@@ -31,5 +31,5 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Switch back to yiedsdev to avoid accidental container runs as root
+# Switch back to yieldsdev to avoid accidental container runs as root
 USER $NB_UID
