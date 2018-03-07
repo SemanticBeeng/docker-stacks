@@ -41,16 +41,16 @@ USER $NB_UID
 # R packages including IRKernel which gets installed globally.
 RUN conda config --system --append channels r && \
     conda install --quiet --yes \
-    'rpy2=2.8*' \
-    'r-base=3.3.2' \
-    'r-irkernel=0.7*' \
+    'rpy2=2.9*' \
+    'r-base=3.4.3' \
+    'r-irkernel=0.8.11*' \
     'r-plyr=1.8*' \
-    'r-devtools=1.12*' \
-    'r-tidyverse=1.0*' \
-    'r-shiny=0.14*' \
-    'r-rmarkdown=1.2*' \
-    'r-forecast=7.3*' \
-    'r-rsqlite=1.1*' \
+    'r-devtools=1.13.4*' \
+    'r-tidyverse=1.2.1*' \
+    'r-shiny=1.0.5*' \
+    'r-rmarkdown=1.8*' \
+    'r-forecast=8.2*' \
+    'r-rsqlite=2.0*' \
     'r-reshape2=1.4*' \
     'r-nycflights13=0.2*' \
     'r-caret=6.0*' \
@@ -62,9 +62,9 @@ RUN conda config --system --append channels r && \
     fix-permissions /home/$NB_USER
 
 # Add Julia packages
-# Install IJulia as jovyan and then move the kernelspec out
+# Install IJulia as yieldsdev and then move the kernelspec out
 # to the system share location. Avoids problems with runtime UID change not
-# taking effect properly on the .local folder in the jovyan home dir.
+# taking effect properly on the .local folder in the yieldsdev home dir.
 RUN julia -e 'Pkg.init()' && \
     julia -e 'Pkg.update()' && \
     julia -e 'Pkg.add("HDF5")' && \
