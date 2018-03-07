@@ -61,7 +61,7 @@ RUN mkdir /home/$NB_USER/work && \
     fix-permissions /home/$NB_USER
 
 # Install conda as yieldsdev and check the md5 sum provided on the download site
-ENV MINICONDA_VERSION 4.4.9
+ENV MINICONDA_VERSION 4.3.30
 RUN cd /tmp && \
     wget --quiet https://repo.continuum.io/miniconda/Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh && \
     echo "0b80a152332a4ce5250f3c09589c7a81 *Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh" | md5sum -c - && \
@@ -79,10 +79,10 @@ RUN cd /tmp && \
 # Install Jupyter Notebook and Hub
 RUN conda install --quiet --yes \
     'notebook=5.2.*' \
-    'jupyterhub=0.9.*' \
-    'jupyterlab=1.0.*' \
+    'jupyterhub=0.8.0.*' \
+    'jupyterlab=0.31.*' \
     && conda clean -tipsy && \
-    jupyter labextension install @jupyterlab/hub-extension@^0.9.0 && \
+    jupyter labextension install @jupyterlab/hub-extension@^0.8.0 && \
     npm cache clean && \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
     rm -rf /home/$NB_USER/.cache/yarn && \
