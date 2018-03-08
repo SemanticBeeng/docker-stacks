@@ -6,6 +6,7 @@ LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 
 # Install py4j
 RUN conda install --quiet --yes \
+    'pyarrow=0.8.0*' \
     'py4j=0.10.6*' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR && \
