@@ -44,7 +44,7 @@ def test_uid_change(container):
     )
     # usermod is slow so give it some time
     c.wait(timeout=120)
-    assert 'uid=1010(jovyan)' in c.logs(stdout=True).decode('utf-8')
+    assert 'uid=1010(yieldsdev)' in c.logs(stdout=True).decode('utf-8')
 
 
 def test_gid_change(container):

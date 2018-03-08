@@ -22,10 +22,10 @@ RUN conda install --quiet --yes \
     'r-base=3.4.3' \
     'r-irkernel=0.7*' \
     'r-plyr=1.8*' \
-    'r-devtools=1.12*' \
-    'r-tidyverse=1.0*' \
-    'r-shiny=0.14*' \
-    'r-rmarkdown=1.2*' \
+    'r-devtools=1.13.4*' \
+    'r-tidyverse=1.2.1' \
+    'r-shiny=1.0.5*' \
+    'r-rmarkdown=1.8*' \
     'r-forecast=7.3*' \
     'r-rsqlite=1.1*' \
     'r-reshape2=1.4*' \
