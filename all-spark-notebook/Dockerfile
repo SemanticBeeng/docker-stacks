@@ -21,16 +21,16 @@ RUN apt-get update && \
 
 USER $NB_UID
 
-# R packages
-RUN conda install --quiet --yes \
-    'r-base=3.4.3' \
-    'r-irkernel=0.7*' \
-    'r-ggplot2=2.2*' \
-    'r-sparklyr=0.7.0*' \
-    'r-rcurl=1.95*' && \
-    conda clean -tipsy && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+## R packages
+#RUN conda install --quiet --yes \
+#    'r-base=3.4.3' \
+#    'r-irkernel=0.8.11*' \
+#    'r-ggplot2=2.2*' \
+#    'r-sparklyr=0.7.0*' \
+#    'r-rcurl=1.95*' && \
+#    conda clean -tipsy && \
+#    fix-permissions $CONDA_DIR && \
+#    fix-permissions /home/$NB_USER
 
 # Apache Toree kernel
 RUN pip install --no-cache-dir \

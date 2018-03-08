@@ -20,7 +20,7 @@ USER $NB_UID
 # R packages
 RUN conda install --quiet --yes \
     'r-base=3.4.3' \
-    'r-irkernel=0.7*' \
+    'r-irkernel=0.8.11*' \
     'r-plyr=1.8*' \
     'r-devtools=1.13.4*' \
     'r-tidyverse=1.2.1' \
