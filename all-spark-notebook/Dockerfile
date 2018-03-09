@@ -21,8 +21,10 @@ RUN apt-get update && \
 
 USER $NB_UID
 
-# R packages
-RUN conda config --system --append channels r && \
+RUN /bin/bash -c "source activate yieldsdev_env && \
+    \
+# R packages \
+    conda config --system --append channels r && \
     conda install --quiet --yes \
     'r-base=3.4.3' \
     'r-irkernel=0.8.11*' \
@@ -31,7 +33,7 @@ RUN conda config --system --append channels r && \
     'r-rcurl=1.95*' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+    fix-permissions /home/$NB_USER"
 
 # Apache Toree kernel
 RUN pip install --no-cache-dir \

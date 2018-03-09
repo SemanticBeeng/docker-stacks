@@ -74,6 +74,9 @@ RUN cd /tmp && \
     conda clean -tipsy
 
 # Install Jupyter notebook and Hub
+conda create -n yieldsdev_env python=3.5
+source activate yieldsdev_env
+
 RUN yes | pip install --upgrade pip
 RUN yes | pip install --quiet --no-cache-dir \
     'notebook==5.2.*' \

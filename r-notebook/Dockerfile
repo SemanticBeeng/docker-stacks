@@ -18,7 +18,9 @@ RUN apt-get update && \
 USER $NB_UID
 
 # R packages
-RUN conda install --quiet --yes \
+RUN /bin/bash -c "source activate yieldsdev_env && \
+    \
+    conda install --quiet --yes \
     'r-base=3.4.3' \
     'r-irkernel=0.8.11*' \
     'r-plyr=1.8*' \
@@ -26,8 +28,8 @@ RUN conda install --quiet --yes \
     'r-tidyverse=1.2.1' \
     'r-shiny=1.0.5*' \
     'r-rmarkdown=1.8*' \
-    'r-forecast=7.3*' \
-    'r-rsqlite=1.1*' \
+    'r-forecast=8.2*' \
+    'r-rsqlite=2.0*' \
     'r-reshape2=1.4*' \
     'r-nycflights13=0.2*' \
     'r-caret=6.0*' \
@@ -36,4 +38,4 @@ RUN conda install --quiet --yes \
     'r-randomforest=4.6*' \
     'r-hexbin=1.27*' && \
     conda clean -tipsy && \
-    fix-permissions $CONDA_DIR
+    fix-permissions $CONDA_DIR"

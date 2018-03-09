@@ -77,7 +77,10 @@ RUN cd /tmp && \
     fix-permissions /home/$NB_USER
 
 # Install Jupyter Notebook and Hub
-RUN conda install --quiet --yes \
+RUN conda create -n yieldsdev_env python=3.5
+RUN /bin/bash -c "source activate yieldsdev_env && \
+    \
+    conda install --quiet --yes \
     'notebook=5.2.*' \
     'jupyterhub=0.8.0.*' \
     'jupyterlab=0.31.*' \
@@ -87,7 +90,7 @@ RUN conda install --quiet --yes \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
     rm -rf /home/$NB_USER/.cache/yarn && \
     fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+    fix-permissions /home/$NB_USER"
 
 USER root
 

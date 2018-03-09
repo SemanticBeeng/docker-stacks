@@ -4,14 +4,16 @@ FROM jupyter/scipy-notebook
 
 LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 
-# Install Python thigs we meed from Spark
-RUN conda install --quiet --yes \
+# Install Python things we meed from Spark
+RUN /bin/bash -c "source activate yieldsdev_env && \
+    \
+    conda install --quiet --yes \
     'pyarrow=0.8.0*' \
     'rpy2=2.9*' \
     'py4j=0.10.6*' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+    fix-permissions /home/$NB_USER"
 
 USER root
 
