@@ -18,9 +18,7 @@ RUN apt-get update && \
 USER $NB_UID
 
 # R packages
-RUN /bin/bash -c "source activate yieldsdev_env && \
-    \
-    conda install --quiet --yes \
+RUN conda install --quiet --yes \
     'r-base=3.4.3' \
     'r-irkernel=0.8.11*' \
     'r-plyr=1.8*' \
@@ -38,4 +36,4 @@ RUN /bin/bash -c "source activate yieldsdev_env && \
     'r-randomforest=4.6*' \
     'r-hexbin=1.27*' && \
     conda clean -tipsy && \
-    fix-permissions $CONDA_DIR"
+    fix-permissions $CONDA_DIR

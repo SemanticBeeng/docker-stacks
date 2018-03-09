@@ -5,7 +5,7 @@
 set -e
 
 # conda create -n yieldsdev_env python=3.5
-source activate yieldsdev_env
+# source activate yieldsdev_env
 
 # set default ip to 0.0.0.0
 if [[ "$NOTEBOOK_ARGS $@" != *"--ip="* ]]; then

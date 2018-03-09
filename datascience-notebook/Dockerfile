@@ -10,8 +10,8 @@ USER root
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     fonts-dejavu \
-#    tzdata \
-#    gfortran \
+    tzdata \
+    gfortran \
     gcc && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -39,9 +39,7 @@ RUN apt-get update && \
 USER $NB_UID
 
 # R packages including IRKernel which gets installed globally.
-RUN /bin/bash -c "source activate yieldsdev_env && \
-    \
-    conda config --system --append channels r && \
+RUN conda config --system --append channels r && \
     conda install --quiet --yes \
     'r-base=3.4.3' \
     'r-irkernel=0.8.11*' \
@@ -60,7 +58,7 @@ RUN /bin/bash -c "source activate yieldsdev_env && \
     'r-randomforest=4.6*' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER"
+    fix-permissions /home/$NB_USER
 
 ## Add Julia packages
 ## Install IJulia as yieldsdev and then move the kernelspec out

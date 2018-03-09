@@ -5,7 +5,7 @@
 set -e
 
 # conda create -n yieldsdev_env python=3.5
-source activate yieldsdev_env
+# source activate yieldsdev_env
 
 # Exec the specified command or fall back on bash
 if [ $# -eq 0 ]; then

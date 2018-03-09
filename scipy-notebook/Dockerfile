@@ -17,9 +17,7 @@ USER $NB_UID
 # Install Python 3 packages
 # Remove pyqt and qt pulled in for matplotlib since we're only ever going to
 # use notebook-friendly backends in these images
-RUN /bin/bash -c "source activate yieldsdev_env && \
-    \
-    conda install --quiet --yes \
+RUN  conda install --quiet --yes \
     'nomkl' \
     'ipywidgets=7.1*' \
     'pandas=0.22*' \
@@ -56,20 +54,20 @@ RUN /bin/bash -c "source activate yieldsdev_env && \
     rm -rf /home/$NB_USER/.cache/yarn && \
     rm -rf /home/$NB_USER/.node-gyp && \
     fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER && \
-    \
-# Install facets which does not have a pip or conda package at the moment \
-    cd /tmp && \
+    fix-permissions /home/$NB_USER
+
+# Install facets which does not have a pip or conda package at the moment
+RUN cd /tmp && \
     git clone https://github.com/PAIR-code/facets.git && \
     cd facets && \
     jupyter nbextension install facets-dist/ --sys-prefix && \
     rm -rf facets && \
     fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER"
+    fix-permissions /home/$NB_USER
 
 # Import matplotlib the first time to build the font cache.
 ENV XDG_CACHE_HOME /home/$NB_USER/.cache/
-RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
+RUN MPLBACKEND=Agg python -c 'import matplotlib.pyplot' && \
     fix-permissions /home/$NB_USER
 
 USER $NB_UID
